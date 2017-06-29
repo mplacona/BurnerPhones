@@ -5,5 +5,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController class SMSController {
     @RequestMapping(value = "/")
-    fun helloSpringBoot() = "Hello Spring Boot"
+    fun helloSpringBoot() = "Hello Spring Boot + Kotlin. You look ❤️ today"
 }
