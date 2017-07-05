@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/sms")
 @RestController class SMSController {
     @RequestMapping(value = "/")
-    fun helloSpringBoot() = "Hello Spring Boot + Kotlin. You look ❤ today"
+    fun helloSpringBoot() = "A nice looking sms controller"
 
     @RequestMapping(value = "/forwardSMS", produces = arrayOf("text/xml"))
     fun forwardSMS(@RequestParam(value = "From") from: String, @RequestParam(value = "Body") body: String): String{

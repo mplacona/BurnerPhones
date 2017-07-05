@@ -39,7 +39,7 @@ class SMSControllerTest {
     @Throws(Exception::class)
     fun shouldReturnDefaultMessage() {
         this.mockMvc.perform(get("/sms/")).andDo(print()).andExpect(status().isOk)
-                .andExpect(content().string(containsString("Hello Spring Boot + Kotlin. You look ? today")))
+                .andExpect(content().string(containsString("A nice looking sms controller")))
     }
 
     @Test
