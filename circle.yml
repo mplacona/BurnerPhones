@@ -1,0 +1,13 @@
+test:
+    override:
+        - (./gradlew assemble test):
+            timeout: 360
+
+    post:
+        # Collect the JUnit reports
+        - mkdir -p $CIRCLE_TEST_REPORTS/reports/junit
+        - find build/test-results/test -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/reports/junit/ \;
+
+        # Collect the HTML Test reports
+        - mkdir -p $CIRCLE_TEST_REPORTS/reports/junit/html
+        - cp -r /home/ubuntu/BurnerPhones/build/reports/tests $CIRCLE_TEST_REPORTS/reports/junit/html
