@@ -27,6 +27,8 @@ class SMSControllerTest {
     fun setup(){
         MockitoAnnotations.initMocks(this)
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
+
+        System.setProperty("MY_NUMBER", "+44 1234567890")
     }
 
     @Test
@@ -45,7 +47,7 @@ class SMSControllerTest {
     @Test
     @Throws(Exception::class)
     fun shouldReturnForwardSMSTwiML() {
-        val toNumber = System.getenv("MY_NUMBER")
+        val toNumber = System.getProperty("MY_NUMBER")
         val expectedResult = "<Response><Message to=\"$toNumber\"><Body>Message from: +1234567890 \n This is a test message</Body></Message></Response>"
         mockMvc.perform(
                 post("/sms/forwardSMS")

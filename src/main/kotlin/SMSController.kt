@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
     @RequestMapping(value = "/forwardSMS", produces = arrayOf("text/xml"))
     fun forwardSMS(@RequestParam(value = "From") from: String, @RequestParam(value = "Body") body: String): String{
         val message = Message.Builder()
-                .to(System.getenv("MY_NUMBER"))
+                .to(System.getProperty("MY_NUMBER"))
                 .body(Body("Message from: $from \n $body")).build()
         return MessagingResponse.Builder().message(message).build().toXml()
     }

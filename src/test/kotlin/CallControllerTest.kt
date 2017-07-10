@@ -27,6 +27,8 @@ class CallControllerTest {
     fun setup(){
         MockitoAnnotations.initMocks(this)
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
+
+        System.setProperty("MY_NUMBER", "+44 1234567890")
     }
 
     @Test
@@ -45,7 +47,7 @@ class CallControllerTest {
     @Test
     @Throws(Exception::class)
     fun shouldReturnForwardCallTwiML() {
-        val toNumber = System.getenv("MY_NUMBER")
+        val toNumber = System.getProperty("MY_NUMBER")
         val expectedResult = "<Response><Say voice=\"alice\">You have a call from +1234567890</Say><Dial><Number>$toNumber</Number></Dial></Response>"
 
         mockMvc.perform(
