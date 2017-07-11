@@ -1,0 +1,11 @@
+{
+  "name": "Burner Phone",
+  "description": "A Kotlin burner phone powered by Twilio",
+  "repository": "https://github.com/mplacona/BurnerPhones",
+  "keywords": ["kotlin", "spring boot", "twilio", "burner"],
+  "env": {
+    "MY_NUMBER": {
+            "description": "Your telephone number. All your burner phones will redirect here"
+    }
+  }
+}
