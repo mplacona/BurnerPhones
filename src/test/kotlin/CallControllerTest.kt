@@ -8,7 +8,6 @@ import org.mockito.MockitoAnnotations
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
@@ -43,20 +42,4 @@ class CallControllerTest {
         this.mockMvc.perform(get("/call/")).andDo(print()).andExpect(status().isOk)
                 .andExpect(content().string(containsString("A nice looking call controller")))
     }
-
-    @Test
-    @Throws(Exception::class)
-    fun shouldReturnForwardCallTwiML() {
-        val toNumber = System.getProperty("MY_NUMBER")
-        val expectedResult = "<Response><Say voice=\"alice\">You have a call from +1234567890</Say><Dial><Number>$toNumber</Number></Dial></Response>"
-
-        mockMvc.perform(
-                post("/call/forwardCall")
-                        .param("From", "+1234567890"))
-                .andDo(print())
-                .andExpect(status().isOk)
-                .andExpect(content().string(containsString(expectedResult)))
-    }
-
-
 }

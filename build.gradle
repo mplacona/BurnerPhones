@@ -31,7 +31,6 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
-    compile("org.springframework.boot:spring-boot-devtools")
     compile group: 'com.twilio.sdk', name: 'twilio', version: '7.12.0'
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
