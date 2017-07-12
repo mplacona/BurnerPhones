@@ -48,7 +48,7 @@ class CallControllerTest {
     @Throws(Exception::class)
     fun shouldReturnForwardCallTwiML() {
         val toNumber = System.getProperty("MY_NUMBER")
-        val expectedResult = "<Response><Say voice=\"alice\">You have a call from +1234567890</Say><Dial><Number>$toNumber</Number></Dial></Response>"
+        val expectedResult = "<Response><Dial><Number>$toNumber</Number></Dial><Say voice=\"alice\">You have a call from +1234567890</Say></Response>"
 
         mockMvc.perform(
                 post("/call/forwardCall")
