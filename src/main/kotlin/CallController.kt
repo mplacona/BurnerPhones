@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 
     @RequestMapping(value = "/forwardCall", produces = arrayOf("text/xml"))
     fun forwardCall(@RequestParam(value = "From") from: String): String{
-        var call = Dial.Builder()
+        val call = Dial.Builder()
                 .number(Number.Builder(System.getProperty("MY_NUMBER")).build())
                 .build()
         return VoiceResponse.Builder()
